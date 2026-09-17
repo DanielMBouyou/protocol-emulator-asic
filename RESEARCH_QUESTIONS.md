@@ -55,8 +55,8 @@ Adding a question: append it to its group with the next identifier and add its s
 - Addressed in: [S01](PREBENCH_PLAN.md#s01-challenge-and-pdk-constraints).
 - Status: OPEN.
 
-### RQ-08 Verification and firmware deliverable expectations
-- Question: Does the organizer expect a particular verification framework, and are the firmware toolchain and instruction set document mentioned in the organizer's framing ([F3](PROJECT_SCOPE.md#organizer-facts)) expected as deliverables?
+### RQ-08 Verification and software deliverable expectations
+- Question: Does the organizer expect a particular verification framework, and are a firmware toolchain and an instruction set document, which the organizer's framing ([F3](PROJECT_SCOPE.md#organizer-facts)) does not name as deliverables, expected as deliverables?
 - Counts as an answer: Tier 1 claims from the organizer; otherwise NOT STATED. The answer constrains deliverables only; it selects nothing covered by the [prohibition](PROJECT_SCOPE.md#temporary-prohibition-of-microarchitectural-choices).
 - Linked open questions: [OQ-26](PROJECT_SCOPE.md#oq-26-expected-verification-framework), [OQ-27](PROJECT_SCOPE.md#oq-27-firmware-toolchain-and-isa-document-as-deliverable).
 - Addressed in: [S01](PREBENCH_PLAN.md#s01-challenge-and-pdk-constraints). Consumed by S08.
@@ -90,7 +90,7 @@ Adding a question: append it to its group with the next identifier and add its s
 
 ### RQ-13 Enumeration of the protocol population
 - Question: What is the population of protocols from which the corpus is drawn, and by which documented procedure is it enumerated beyond the organizer's list?
-- Counts as an answer: the corpus universe definition (DECISION S03-D1) and an enumeration procedure (venues, standards body catalogues, inclusion criteria) that a second person applies to produce the same list, with the exclusion log and saturation declared.
+- Counts as an answer: the corpus universe definition (DECISION S03-D1) and an enumeration procedure (venues, standards body catalogues, inclusion criteria) that a second operator applies to produce the same list, with the exclusion log and saturation declared.
 - Addressed in: [S03](PREBENCH_PLAN.md#s03-protocol-and-workload-corpus).
 - Status: OPEN.
 
@@ -177,7 +177,7 @@ Families are named only as families to investigate; no product is summarized in 
 - Status: OPEN.
 
 ### RQ-26 Reproducible selection of the benchmark subset
-- Question: How is the benchmark subset selected so that a second person regenerates it exactly from the dataset and the documented method, and how is every removed entry accounted for?
+- Question: How is the benchmark subset selected so that a second operator regenerates it exactly from the dataset and the documented method, and how is every removed entry accounted for?
 - Counts as an answer: a documented method with parameters, seeds and software versions, the mapping of every removed entry to its representative with a computed reason, and an OBSERVATION of an independent regeneration matching the original.
 - Addressed in: [S06](PREBENCH_PLAN.md#s06-reduction-and-redundancy).
 - Status: OPEN.
@@ -204,7 +204,7 @@ Families are named only as families to investigate; no product is summarized in 
 
 ### RQ-30 Requirements of the Tiny Tapeout verification pipeline
 - Question: What does the Tiny Tapeout CMOS5L flow require or provide for verification (precheck, gate-level simulation, test conventions), and is any of it mandatory for the competition?
-- Counts as an answer: Tier 1 claims from Tiny Tapeout flow files and documentation in the technology observation record, and the organizer answer under [RQ-01](#rq-01-submission-rules-and-eligibility) and [RQ-08](#rq-08-verification-and-firmware-deliverable-expectations).
+- Counts as an answer: Tier 1 claims from Tiny Tapeout flow files and documentation in the technology observation record, and the organizer answer under [RQ-01](#rq-01-submission-rules-and-eligibility) and [RQ-08](#rq-08-verification-and-software-deliverable-expectations).
 - Linked open questions: [OQ-07](PROJECT_SCOPE.md#oq-07-precheck-and-gate-level-tests), [OQ-26](PROJECT_SCOPE.md#oq-26-expected-verification-framework).
 - Addressed in: [S01](PREBENCH_PLAN.md#s01-challenge-and-pdk-constraints) for the flow facts, [S08](PREBENCH_PLAN.md#s08-verification-methodologies) for the catalogue.
 - Status: OPEN.

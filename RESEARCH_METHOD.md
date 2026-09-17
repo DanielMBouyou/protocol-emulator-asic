@@ -1,6 +1,6 @@
 # RESEARCH_METHOD
 
-Canonical location for how research is conducted in this project: source priority, search strategy, personal communication and the question log, inclusion and exclusion, structured extraction, version handling, reproducibility, the stop rule, and the candidate data methods. The rules that govern what an extracted record must contain and what it may become (locator, value, unit, conditions, absence, contradictions, deduplication, independence, status labels, promotion, definitions of FACT, OBSERVATION, HYPOTHESIS and DECISION) are canonical in [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md) and are not restated here. The objective of this file is that two persons applying it independently to the same research question produce the same query log, the same screening decisions and the same claim records.
+Canonical location for how research is conducted in this project: source priority, search strategy, personal communication and the question log, inclusion and exclusion, structured extraction, version handling, reproducibility, the stop rule, and the candidate data methods. The rules that govern what an extracted record must contain and what it may become (locator, value, unit, conditions, absence, contradictions, deduplication, independence, status labels, promotion, definitions of FACT, OBSERVATION, HYPOTHESIS and DECISION) are canonical in [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md) and are not restated here. The objective of this file is that two independent operators applying it to the same research question produce the same query log, the same screening decisions and the same claim records. What an operator is, and what independence between two of them requires, is fixed in [knowledge/README.md](knowledge/README.md#operators) under [DEC-0009](knowledge/decision-log.md#dec-0009-meaning-of-an-independent-operator).
 
 ## Source priority
 
@@ -19,7 +19,7 @@ Rules:
 - For protocols, the Tier 1 source is the current normative specification of the standards body or the specification owner. A protocol without a standards body has the originating owner's specification as Tier 1 for that protocol, recorded as owner-originated. A vendor reference manual describing how one product implements a protocol is Tier 2 for the protocol and Tier 2 for the product.
 - A document that reproduces or paraphrases another document is assigned the tier of its own publisher, and its source record lists the reproduced document under derived_from so that independence can be computed per [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#independence-of-sources).
 - When tiers disagree on a statement, the disagreement is a contradiction per [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#contradictions); it is not resolved by tier.
-- When the tier assignment is ambiguous, both persons record their assignment and the reason; the rule text is amended so that the case is no longer ambiguous, and the amendment is logged as a DECISION.
+- When the tier assignment is ambiguous, both operators record their assignment and the reason; the rule text is amended so that the case is no longer ambiguous, and the amendment is logged as a DECISION.
 
 ## Search strategy
 
@@ -46,7 +46,7 @@ Every query, including those with zero useful results, has one entry:
 | screened_depth | number of results screened; the depth to screen per venue is a DECISION at S00 |
 | screened_list | the title and URL of every screened result, in the order shown |
 | included_ids | source identifiers included from this query |
-| executed_by | person |
+| executed_by | operator, per the vocabulary of [knowledge/README.md](knowledge/README.md#operators) |
 | notes | venue behaviour observed (personalization, unavailability, captcha) |
 
 The screened_list is what makes a non-deterministic web search reproducible: a re-run is compared against the list, not against the live results. Repeating a query on a later date is a new entry linked to the original; differences are recorded, never overwritten.
@@ -94,7 +94,7 @@ Exclusion codes:
 | EX-LANG | fails C4 |
 | EX-UNIVERSE | fails C5; the criterion text of the universe definition that excluded it is quoted |
 
-No exclusion code refers to an implementation consideration. A source that supports a fact used in any gate condition is screened by two persons independently. A disagreement is resolved by both re-reading the criterion text against the document; if the text does not settle it, the criterion text is amended and the amendment logged as a DECISION. Preference is never a resolution.
+No exclusion code refers to an implementation consideration. A source that supports a fact used in any gate condition is screened by two independent operators. A disagreement is resolved by both re-reading the criterion text against the document; if the text does not settle it, the criterion text is amended and the amendment logged as a DECISION. Preference is never a resolution.
 
 ## Structured extraction
 
@@ -137,11 +137,11 @@ Extraction produces two record types. The required content of the fields (locato
 | subject_tags | from the controlled vocabulary fixed at S00; adding a tag is a logged DECISION |
 | rq_ids | research question identifiers |
 | source_version | copy of the source version field at extraction time |
-| extracted_by and extracted_on | person and ISO 8601 date |
+| extracted_by and extracted_on | operator and ISO 8601 date |
 | double_extraction | claim identifier of the independent extraction, or NONE |
 | caveats | NOT_WRITTEN for verbal replies; NONE otherwise |
 
-Double extraction: the fraction of claims extracted independently by two persons, and which claims (at least every claim supporting a gate condition), is fixed as a DECISION at S00. Two extractions of the same span must be identical after normalization; a difference is resolved by amending the rule that produced it, then re-extracting.
+Double extraction: the fraction of claims extracted independently by two operators, and which claims (at least every claim supporting a gate condition), is fixed as a DECISION at S00. Two extractions of the same span must be identical after normalization; a difference is resolved by amending the rule that produced it, then re-extracting.
 
 ## Separation of source, claim and canonical knowledge
 
@@ -157,7 +157,7 @@ A source record describes a document. A claim record describes what one document
 
 ## Reproducibility
 
-Another person can redo the search when the following exist: the concept blocks and synonym lists per research question; the venue list; every query log entry with its screened_list; every screening decision with its code; every source record with its retained copy hash; every claim record with its locator and excerpt; every question log entry; every DECISION that fixed a parameter of this method; and, for every computation on the dataset, the input dataset version, the method, the parameters, the seeds, the software versions and the output hash.
+A second operator can redo the search when the following exist: the concept blocks and synonym lists per research question; the venue list; every query log entry with its screened_list; every screening decision with its code; every source record with its retained copy hash; every claim record with its locator and excerpt; every question log entry; every DECISION that fixed a parameter of this method; and, for every computation on the dataset, the input dataset version, the method, the parameters, the seeds, the software versions and the output hash.
 
 A reproduction re-runs the logged queries of the reproduction set (fixed as a DECISION at S00), compares the results against the logged screened_list and included_ids, and records every difference as an OBSERVATION; it never edits the original log. The reproduction of dataset computations regenerates the output from the logged inputs and compares hashes.
 
@@ -172,7 +172,7 @@ Saturation is declared per research question by the following procedure, and its
    - (a) every Tier 1 source that any included source names as authoritative for the subject has been retrieved or recorded KNOWN-UNRETRIEVED;
    - (b) every venue of the list and every tier has been searched at least once for the question, and, for protocol questions, the owner body of every corpus protocol concerned has been queried;
    - (c) the last K consecutive rounds added zero new canonical facts and zero new corpus entries for the research question; K is fixed as a DECISION at S00 with recorded rationale;
-   - (d) two persons independently confirm (a) and (b) by listing the authoritative sources and venues and checking each against the source register and the query log;
+   - (d) two independent operators confirm (a) and (b) by listing the authoritative sources and venues and checking each against the source register and the query log;
    - (e) every open contradiction touching the research question has a resolution path logged.
 5. Saturation is reopened when a new Tier 1 source appears, when an included source is revised, or when a personal communication answers or changes a question; reopening is logged and the rule applied again.
 

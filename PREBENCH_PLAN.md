@@ -12,10 +12,10 @@ Canonical location for the PREBENCH phase plan: calendar, stages, objectives, in
 ## Rules of the plan
 
 - Each stage has an objective; inputs; outputs as named artifacts (logical names only; their format and storage are fixed by DECISION S00-D4; nothing is created by this plan); a gate; and the research questions it serves.
-- A gate is a list of verifiable completeness or consistency conditions. No gate is a count chosen without rationale. A gate is evaluated by a person who did not produce the artifact (the ARCHITECTURE GATE uses two verifiers); the evaluation is recorded as a DECISION listing each condition as MET or NOT MET with the artifact version checked. No partial credit and no waiver.
+- A gate is a list of verifiable completeness or consistency conditions. No gate is a count chosen without rationale. A gate is evaluated by an operator that did not produce the artifact (the ARCHITECTURE GATE uses two verifiers); the evaluation is recorded as a DECISION listing each condition as MET or NOT MET with the artifact version checked. No partial credit and no waiver.
 - Any numeric threshold used by a gate is fixed as a DECISION with rationale at the stage named, never in this file. The labels S00-D1, S03-D1 and so on are the plan names of those DECISION records; the records themselves carry canonical identifiers per [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#registers-and-identifiers).
 - A failed gate is handled by the [Slip rule](#slip-rule).
-- Stages overlap where the schedule shows it; a stage starts when its inputs exist, not before. Overlapping stages on the same day are worked by different persons or in sequence.
+- Stages overlap where the schedule shows it; a stage starts when its inputs exist, not before. Overlapping stages on the same day are worked by different operators or in sequence.
 - Artifacts named by the plan are the registers of [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#registers-and-identifiers) and the stage artifacts listed below.
 - The mapping between stages and research questions is the "Addressed in" line of each question in [RESEARCH_QUESTIONS.md](RESEARCH_QUESTIONS.md) and the "Serves" line of each stage below; the two must agree, and S00 checks that they do.
 
@@ -28,10 +28,10 @@ If a gate fails, the stage continues until the failing condition passes; every d
 ### S00 Methodological setup
 
 - Days 1 to 2 (2026-09-17 to 2026-09-18).
-- Objective: make the method executable by two people independently before any research is recorded.
+- Objective: make the method executable by two independent operators before any research is recorded.
 - Inputs: [RESEARCH_METHOD.md](RESEARCH_METHOD.md), [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md), the bootstrap facts of [PROJECT_SCOPE.md](PROJECT_SCOPE.md#challenge-constraints-as-currently-known), [RESEARCH_QUESTIONS.md](RESEARCH_QUESTIONS.md).
 - Outputs:
-  - the registers with their field lists instantiated, each with one dry-run entry;
+  - the registers with their field lists instantiated, and one dry-run entry on the organizer page exercising every field of the source record and the claim record (per [DEC-0008](knowledge/decision-log.md#dec-0008-meaning-of-instantiating-a-register-and-of-the-dry-run-entry));
   - the identifier mapping of bootstrap entries (F, T, I, CTR-01, OBS-B1, OQ) to canonical register identifiers;
   - the DECISIONs the method defers to this stage: S00-D1 (stop rule K), S00-D2 (screening depth per venue), S00-D3 (venue list per research question group), S00-D4 (register format, storage, and the primary-document store location), S00-D5 (double-extraction set and fraction), S00-D6 (reproduction set for ARCHITECTURE GATE condition AG-14), S00-D7 (controlled vocabulary of subject tags);
   - stage-to-question coverage map;
@@ -40,11 +40,12 @@ If a gate fails, the stage continues until the failing condition passes; every d
 - Gate G00:
   - every field listed in [RESEARCH_METHOD.md](RESEARCH_METHOD.md#structured-extraction) exists in the corresponding register, and the dry-run entry on the organizer page satisfies every rule of [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md);
   - every deferred DECISION S00-D1 to S00-D7 has a decision log entry with rationale and alternatives;
-  - the bootstrap facts are re-entered as claims by two persons independently and the two claim sets are identical after normalization per [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#atomic-fact-rule); any difference is resolved by correcting the rule text, not the records;
+  - the bootstrap facts are re-entered as claims by two independent operators and the two claim sets are identical after normalization per [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#atomic-fact-rule); any difference is resolved by correcting the rule text, not the records;
   - CTR-01 has a contradiction register entry and OBS-B1 an observation register entry;
   - the coverage map has no research question without a stage and no stage S01 to S10 without a research question, and matches the "Addressed in" lines of RESEARCH_QUESTIONS.md one to one;
   - every open question OQ-01 to OQ-30 has a drafted question text and an assigned channel in the contact plan.
 - Serves: the method for all questions; no research question is answered here.
+- Gate evaluation, 2026-09-17: NOT PASSED. Conditions 2, 4, 5 and 6 are MET; condition 1 is NOT MET because no claim record uses the closed vocabulary its `reading_confidence` field is defined to take, and condition 3 is NOT MET because two cycles of independent extraction did not produce identical claim sets. The evaluation, the measured evidence and what each failing condition needs are in [knowledge/gate-g00.md](knowledge/gate-g00.md). S00 therefore stays open under the [slip rule](#slip-rule): the downstream dates shift by the number of days S00 runs past day 2, the new dates are recorded as a DECISION when the gate passes, and the floor date does not move.
 
 ### S01 Challenge and PDK constraints
 
@@ -64,7 +65,7 @@ If a gate fails, the stage continues until the failing condition passes; every d
   - no artifact of this stage contains a tile dimension or area figure chosen from among the CTR-01 claims; every use of a CTR-01 value complies with [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md#contradictions);
   - every value of the technology observation record has a retrieval date and a repository state identifier; no value comes from memory or from a secondary source without a pointer;
   - saturation is declared per [RESEARCH_METHOD.md](RESEARCH_METHOD.md#stop-and-saturation-rule) for each research question of group A except [RQ-09](RESEARCH_QUESTIONS.md#rq-09-constraints-still-moving-at-freeze), which closes at S10.
-- Serves: [RQ-01](RESEARCH_QUESTIONS.md#rq-01-submission-rules-and-eligibility), [RQ-02](RESEARCH_QUESTIONS.md#rq-02-functional-acceptance-and-protocol-scope), [RQ-03](RESEARCH_QUESTIONS.md#rq-03-judging-criteria), [RQ-04](RESEARCH_QUESTIONS.md#rq-04-area-budget-and-tile-geometry), [RQ-05](RESEARCH_QUESTIONS.md#rq-05-technology-flow-and-pdk-status), [RQ-06](RESEARCH_QUESTIONS.md#rq-06-electrical-clock-power-and-board-constraints), [RQ-07](RESEARCH_QUESTIONS.md#rq-07-schedule-and-shuttle-risk), [RQ-08](RESEARCH_QUESTIONS.md#rq-08-verification-and-firmware-deliverable-expectations), [RQ-09](RESEARCH_QUESTIONS.md#rq-09-constraints-still-moving-at-freeze), [RQ-23](RESEARCH_QUESTIONS.md#rq-23-area-measurement-procedure-on-the-target-flow), [RQ-30](RESEARCH_QUESTIONS.md#rq-30-requirements-of-the-tiny-tapeout-verification-pipeline).
+- Serves: [RQ-01](RESEARCH_QUESTIONS.md#rq-01-submission-rules-and-eligibility), [RQ-02](RESEARCH_QUESTIONS.md#rq-02-functional-acceptance-and-protocol-scope), [RQ-03](RESEARCH_QUESTIONS.md#rq-03-judging-criteria), [RQ-04](RESEARCH_QUESTIONS.md#rq-04-area-budget-and-tile-geometry), [RQ-05](RESEARCH_QUESTIONS.md#rq-05-technology-flow-and-pdk-status), [RQ-06](RESEARCH_QUESTIONS.md#rq-06-electrical-clock-power-and-board-constraints), [RQ-07](RESEARCH_QUESTIONS.md#rq-07-schedule-and-shuttle-risk), [RQ-08](RESEARCH_QUESTIONS.md#rq-08-verification-and-software-deliverable-expectations), [RQ-09](RESEARCH_QUESTIONS.md#rq-09-constraints-still-moving-at-freeze), [RQ-23](RESEARCH_QUESTIONS.md#rq-23-area-measurement-procedure-on-the-target-flow), [RQ-30](RESEARCH_QUESTIONS.md#rq-30-requirements-of-the-tiny-tapeout-verification-pipeline).
 
 ### S02 Programmable IO state of the art
 
@@ -106,7 +107,7 @@ If a gate fails, the stage continues until the failing condition passes; every d
   - every F5 protocol is either present as an ordinary member or in the exclusion log with a criterion code; none has special status;
   - the undefined workload record exists for every F5 protocol;
   - the enumeration coverage record exists for every catalogue of the venue list;
-  - a second person applying S03-D1 to the stratum of S03-D3 produces the same entry list;
+  - a second operator applying S03-D1 to the stratum of S03-D3 produces the same entry list;
   - saturation is declared for [RQ-13](RESEARCH_QUESTIONS.md#rq-13-enumeration-of-the-protocol-population).
 - Serves: [RQ-13](RESEARCH_QUESTIONS.md#rq-13-enumeration-of-the-protocol-population), [RQ-14](RESEARCH_QUESTIONS.md#rq-14-roles-modes-and-variants-as-corpus-entries), [RQ-15](RESEARCH_QUESTIONS.md#rq-15-definition-of-a-workload), [RQ-17](RESEARCH_QUESTIONS.md#rq-17-detection-of-familiarity-bias).
 
@@ -122,7 +123,7 @@ If a gate fails, the stage continues until the failing condition passes; every d
 - Gate G04:
   - every field has every schema element listed above;
   - every field's independence answer is NO; a field answered YES is removed;
-  - two persons extract the same corpus entry independently using the schema; differences are resolved per the double-extraction rule of [RESEARCH_METHOD.md](RESEARCH_METHOD.md#structured-extraction);
+  - two operators extract the same corpus entry independently using the schema; differences are resolved per the double-extraction rule of [RESEARCH_METHOD.md](RESEARCH_METHOD.md#structured-extraction);
   - no field is a weight, a score or a threshold;
   - the schema is versioned and the version is referenced by the extractions.
 - Serves: [RQ-10](RESEARCH_QUESTIONS.md#rq-10-architecture-independent-dimensions-of-a-protocol), [RQ-11](RESEARCH_QUESTIONS.md#rq-11-source-fixed-versus-implementation-defined-values), [RQ-12](RESEARCH_QUESTIONS.md#rq-12-timing-quantities-of-each-protocol).
@@ -163,7 +164,7 @@ If a gate fails, the stage continues until the failing condition passes; every d
   - S06-D1 exists with rationale and alternatives and names no implementation consideration;
   - every removed entry maps to a retained entry with a computed reason; no entry was removed or added by hand;
   - the coverage report exists for every schema field;
-  - a second person regenerates the reduced dataset from the dataset version and the reduction report and obtains the same result.
+  - a second operator regenerates the reduced dataset from the dataset version and the reduction report and obtains the same result.
 - Serves: [RQ-25](RESEARCH_QUESTIONS.md#rq-25-redundancy-reduction-methods-for-the-corpus), [RQ-26](RESEARCH_QUESTIONS.md#rq-26-reproducible-selection-of-the-benchmark-subset).
 
 ### S07 Representative benchmark
@@ -225,7 +226,7 @@ If a gate fails, the stage continues until the failing condition passes; every d
 - Gate G09:
   - S09-D1 and S09-D2 are dated before the first audit run;
   - every holdout entry has been scored by the documented procedure and the score is an OBSERVATION;
-  - every perturbation and its result are recorded such that a second person can rerun them;
+  - every perturbation and its result are recorded such that a second operator can rerun them;
   - every instability or gap is in the limitation register; the benchmark change log shows no edit after the audit that is not justified by a recorded rerun;
   - S09-D3 exists and names no candidate architecture;
   - if a condition fails, the return path is recorded: back to S06 with a new DECISION, never a manual adjustment of entries; the slip rule applies.

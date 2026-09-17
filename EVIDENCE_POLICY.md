@@ -1,6 +1,6 @@
 # EVIDENCE_POLICY
 
-Canonical location for the provenance and consolidation rules of the knowledge base, the registers and their identifiers, the status labels, and the definitions of FACT, OBSERVATION, HYPOTHESIS and DECISION. The search, screening and extraction procedure that produces the records governed here is canonical in [RESEARCH_METHOD.md](RESEARCH_METHOD.md). The objective of this file is that two persons consolidating the same claims independently produce identical fact records.
+Canonical location for the provenance and consolidation rules of the knowledge base, the registers and their identifiers, the status labels, and the definitions of FACT, OBSERVATION, HYPOTHESIS and DECISION. The search, screening and extraction procedure that produces the records governed here is canonical in [RESEARCH_METHOD.md](RESEARCH_METHOD.md). The objective of this file is that two independent operators consolidating the same claims produce identical fact records. What an operator is, and what independence between two of them requires, is fixed in [knowledge/README.md](knowledge/README.md#operators) under [DEC-0009](knowledge/decision-log.md#dec-0009-meaning-of-an-independent-operator).
 
 ## Root of evidence
 
@@ -70,15 +70,41 @@ Every FACT carries one or two of the following labels; an unknown needed by the 
 
 ## Atomic fact rule
 
-A fact statement is written so that two persons produce the same text from the same claim:
+A fact statement is written so that two independent operators produce the same text from the same span. Rules 8 to 19 were added, and rules 1 to 3 extended in place, after the S00 double extraction found that rules 1 to 7 did not force a unique text; the amendment is recorded as [DEC-0010](knowledge/decision-log.md#dec-0010-atomic-fact-rule-amendment).
 
-1. One subject, one predicate, one value or object, optional conditions. A source sentence with two predicates yields two facts.
-2. The subject and the predicate use the source's own terms; no synonym substitution, no translation of units, no rounding.
-3. Qualifiers of precision printed by the source (about, approximately, ~, roughly) are kept in the statement and the precision field is set to AS_STATED.
-4. Modal words (must, should, may, is targeting, will) are kept as printed; they carry the hardness of a rule and are never upgraded or downgraded.
-5. Dates in ISO 8601; numbers as printed, with the printed unit symbol; an exact SI conversion may be added in a separate field, never in place of the printed value.
-6. No evaluative adjective; no inference beyond the span quoted.
-7. The statement contains no reference to any project artifact, only to the world described by the source.
+### Shape
+
+1. One subject, one predicate, one value or object, optional conditions. A source sentence with two predicates yields two facts. Repeated instances of one predicate printed together form a single fact whose object is the printed list in printed order.
+2. The subject is the entity the source describes, never the source, file or page. Source identity belongs to the source record and position to the locator. The exception is a fact whose subject genuinely is the document, such as its licence or its title, and that exception is visible from the predicate.
+3. An imperative is reproduced as the printed imperative, its addressee being the implied subject. No subject is invented for it.
+
+### Wording
+
+4. The subject and the predicate use the source's own terms; no synonym substitution, no translation of units, no rounding.
+5. Pronouns, anaphora and deixis (it, that, this repository, the same, neither) are kept as printed, followed immediately by their referent in square brackets taken verbatim from the same document: `built to do exactly that [bit-bang protocols]`. They are never silently replaced and never left unresolved.
+6. A span quoted in support of a statement is reproduced verbatim inside double quotes, in the fixed frame `<subject> states "<span>"`. A key and value from a machine-readable source take the fixed form `<key> is set to "<value>"`, key and value verbatim. A formulaic notice line, such as a licence header or a version string, is recorded verbatim as a value and never paraphrased into a predicate.
+7. Qualifiers of precision printed by the source (about, approximately, ~, roughly) are kept in the statement and the precision field is set to AS_STATED.
+8. Modal words (must, should, may, is targeting, will) are kept as printed; they carry the hardness of a rule and are never upgraded or downgraded. The modality field records only the modal governing the main predicate; a modal inside a subordinate or relative clause stays in the statement text and the field reads NONE.
+9. No evaluative adjective of the operator's own. Evaluative wording printed by the source is reproduced verbatim and attributed.
+10. No inference beyond the span quoted. The statement contains no reference to any project artifact, only to the world described by the source.
+
+### Values and fields
+
+11. Dates in ISO 8601. Numbers as printed, with the printed unit symbol; an exact conversion may be added in a separate field, never in place of the printed value. A count the operator obtains by enumerating items the source does not print as a number is written as a numeral with the counted noun as unit, and the claim is QUANT. Where the source prints no unit, the unit field reads exactly DIMENSIONLESS with no gloss, and the absence of a printed unit is stated once in reading_confidence.
+12. The kind field is fixed by the printed form of the span, so that one span cannot be QUANT for one operator and QUAL for another: a printed number or measured value is QUANT; a deontic modal or a permission is RULE; a copula naming or defining a term is DEFINITION; an imperative or a sequence of steps is PROCEDURE; a recorded non-occurrence is ABSENCE; anything else is QUAL.
+13. The conditions field holds only material from the span that restricts when the statement holds. Provenance such as a branch, a retrieval date or a document version belongs to the source record, never to conditions.
+14. reading_confidence is a property of the printed form of the span, so spans of identical shape in one document take the same value, and the reason is stated once.
+
+### Absence
+
+15. An ABSENCE fact takes the fixed form `The <source> does not contain <token>`, one token per fact, the token taken verbatim from the statement whose support was sought. The search performed, the variants tried and whether it was case-sensitive go in the locator. No second predicate is appended.
+
+### Which spans become facts
+
+16. Extract the spans the statement under examination asserts, together with any span that contradicts, qualifies or conditions it. Every span quoted anywhere in the extraction, including inside a locator or a note, is itself recorded as a fact.
+17. Provenance material, such as a branch name, a section heading, a callout label or a page title, is recorded in the source record or the locator and not as a fact, unless the statement under examination is itself about the document's structure.
+18. Where the same element is printed differently in two retrieved versions of one source, both readings are recorded as separate facts with their own locators, and the pair is a candidate contradiction under [Contradictions](#contradictions).
+19. Excerpts are taken from a verbatim retrieval of the source. An excerpt that could only be obtained through a rendering that may have altered the text is marked unverified in reading_confidence and may not support a CONFIRMED_FACT.
 
 ## Provenance of every claim
 
@@ -100,7 +126,7 @@ Two sources are independent for a given statement only if all four tests pass, a
 
 1. Lineage: neither source lists the other, directly or through a chain, in derived_from for that statement.
 2. Publisher: the sources are not the same organization reproducing the same underlying document, and one is not a mirror, translation or excerpt of the other.
-3. Text: the statements are not verbatim or near-verbatim (same numbers in the same sentence structure), as judged independently by two persons; a disagreement is recorded as NOT INDEPENDENT.
+3. Text: the statements are not verbatim or near-verbatim (same numbers in the same sentence structure), as judged independently by two operators; a disagreement is recorded as NOT INDEPENDENT.
 4. Access: each source has its own access to the underlying reality (for example, the foundry for a process figure, the organizer for a rule, an experiment for a measurement).
 
 The corroboration count of a fact is the number of pairwise independent sources under these tests. "Several sources" that fail any test count as one: a vendor manual and a blog post that quotes it are one source; two datasheets of the same vendor are one source for a shared statement. The count is a field; no threshold on it confers a status, except that CONFIRMED_FACT requires at least one Tier 1 claim.
@@ -133,7 +159,7 @@ One canonical fact, several claim pointers: the fact register never contains two
 
 Fact lifecycle states: PROPOSED, CANONICAL, CONTESTED, REVERIFY, RETIRED.
 
-- PROPOSED to CANONICAL requires: the atomic fact rule satisfied; at least one claim with locator and excerpt; status label assigned; for QUANT, value, unit and conditions present; deduplication performed; independence tests recorded for every source pair; a second person, not the extractor, re-read the source location and checked each of these items, and the check is recorded with date. A promotion without a second reader is invalid.
+- PROPOSED to CANONICAL requires: the atomic fact rule satisfied; at least one claim with locator and excerpt; status label assigned; for QUANT, value, unit and conditions present; deduplication performed; independence tests recorded for every source pair; a second operator, not the extractor, re-read the source location and checked each of these items, and the check is recorded with date. A promotion without a second reader is invalid.
 - CANONICAL to CONTESTED: a contradiction record is created that references the fact.
 - CONTESTED to CANONICAL: the contradiction is resolved per [Contradictions](#contradictions); the resolving claim is attached.
 - CANONICAL to REVERIFY: a supporting claim is marked CHANGED or REMOVED after a source revision, a MOVING_CONSTRAINT re-verification is overdue, or the retained copy is lost.
