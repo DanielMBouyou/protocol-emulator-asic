@@ -56,3 +56,51 @@ Field list per record, in this order:
 - **date**: 2026-09-17
 - **raw output**: retained outside the repository per [DEC-0004](decision-log.md#dec-0004-s00-d4-register-format-storage-and-primary-document-store). The claims it produced are the [claim register](claim-register.md); the 116 that two operators independently confirmed are consolidated in the [fact register](fact-register.md).
 - **scope limit**: one run under one version of the rule. It does not establish an error rate, and its agreement is bounded by [LIM-0001](limitation-register.md#lim-0001-correlated-error-between-automated-extraction-operators). It is the evidence behind the G00 condition that did not pass, recorded in [gate-g00.md](gate-g00.md).
+
+## OBS-0004 Re-check of every S00 claim against its retained copy
+
+- **statement**: Every one of the 202 claims of the [claim register](claim-register.md) was compared against the retained copy of the source it cites, taken on 2026-09-18 under [DEC-0014](decision-log.md#dec-0014-retention-is-s00-work-and-the-documents-read-on-2026-09-17-were-never-retained). The comparison asks one question only: does the retained copy still contain the excerpt the claim quotes.
+
+  | Result | Claims | Meaning |
+  | --- | --- | --- |
+  | FOUND | 150 | the excerpt appears in the retained copy, character for character after Unicode and whitespace normalization |
+  | FOUND ACROSS MARKUP | 13 | the excerpt appears only once whitespace is ignored, because markup splits the span, for example a phrase wrapped in a strong or anchor element |
+  | ABSENCE CLAIM, NOT A SPAN | 25 | the claim records that a token is not present, so there is no span to find; these were not re-checked and no absence was re-run |
+  | NOT CHECKABLE | 11 | the claim carries no usable excerpt, being one of the records where the two operators reported the source differently and the reconciliation could not settle it |
+  | NOT FOUND | 3 | the excerpt does not appear in the retained copy of the source the claim cites |
+
+  Per source:
+
+  | Source | Claims | Found | Across markup | Absence | Not checkable | Not found |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | SRC-0001 IHP-CMOS5LREPO | 3 | 0 | 0 | 1 | 0 | 2 |
+  | SRC-0002 IHP-DEVREADME | 14 | 14 | 0 | 0 | 0 | 0 |
+  | SRC-0003 IHP-REPO | 5 | 2 | 0 | 2 | 0 | 1 |
+  | SRC-0004 ORG-BLOG | 75 | 55 | 7 | 13 | 0 | 0 |
+  | SRC-0005 TT-CLOCK | 12 | 10 | 1 | 1 | 0 | 0 |
+  | SRC-0006 TT-GDSYAML | 9 | 6 | 0 | 2 | 1 | 0 |
+  | SRC-0007 TT-GPIO | 32 | 26 | 1 | 1 | 4 | 0 |
+  | SRC-0008 TT-IHP0P4 | 7 | 6 | 0 | 0 | 1 | 0 |
+  | SRC-0009 TT-INFOYAML | 14 | 11 | 0 | 2 | 1 | 0 |
+  | SRC-0010 TT-LICENSE | 6 | 5 | 0 | 0 | 1 | 0 |
+  | SRC-0011 TT-MEMORY | 11 | 5 | 4 | 1 | 1 | 0 |
+  | SRC-0012 TT-RUNS | 10 | 7 | 0 | 1 | 2 | 0 |
+  | SRC-0013 TT-TILESIZES | 4 | 3 | 0 | 1 | 0 | 0 |
+
+  Two findings beyond the counts.
+
+  First, all 62 checkable claims taken from the organizer page are supported by its retained copy, with none not found. That is evidence that the page did not change between the two dates, and it is not proof, because the bytes read on the 17th were never hashed.
+
+  Second, the three not found are all on GitHub repository landing pages: CLM-0200 and CLM-0201 cite SRC-0001 and CLM-0181 cites SRC-0003. Their locators say the operator read "line 1 of the raw default-branch README.md, as rendered on the repository landing page", and the excerpts are Markdown source, carrying heading marks, emphasis marks and link syntax. The landing page serves that README rendered to HTML, so the Markdown source is not in it. The source records name the landing page; the excerpts come from a different representation of the file. No claim is rewritten here; the mismatch is carried into [LIM-0003](limitation-register.md#lim-0003-the-documents-the-s00-claims-were-read-from-were-never-retained).
+
+  A third observation was made while performing the retention. SRC-0001 and SRC-0003 embed a per-request `request-id` and `html-safe-nonce`, so two retrievals minutes apart returned different bytes and different hashes. For those two documents a content hash identifies the copy and is not an identity for the document, which is what the [handling of revisions](../RESEARCH_METHOD.md#handling-of-revisions-and-versions) assumes when it versions a page by accessed_on and retained copy hash.
+
+- **procedure**: for each of the 13 sources, one HTTPS retrieval with curl following redirects, written to the primary-document store and hashed with sha256, logged as QRY-0027 to QRY-0039. For each claim, the excerpt was taken from the claim register, Unicode normalized (NFKC, curly quotation marks and dashes folded to their ASCII forms, non-breaking spaces folded to spaces), whitespace collapsed and lowercased, then searched for in two renderings of the retained copy: the raw bytes with HTML entities decoded, and the same with script, style and tag content removed. An excerpt not found in either was searched again with all whitespace removed from both sides, which is what distinguishes FOUND from FOUND ACROSS MARKUP. An excerpt containing the elision mark was split on it and every part required to be present.
+
+- **operator**: OP-OWNER
+- **date**: 2026-09-18
+
+- **raw output**: the retained copies are in the primary-document store named by [DEC-0004](decision-log.md#dec-0004-s00-d4-register-format-storage-and-primary-document-store), outside this repository; each hash is in its source record and each retrieval in the query log.
+
+- **scope limit**: this compares a claim against a copy taken a day after the claim was made. It establishes that the retained copy supports the excerpt; it does not establish that the retained copy is the document the operator read, and nothing can now establish that. A FOUND result is therefore consistency, not verification. Absence claims were not re-run at all, so nothing here bears on whether a token the project recorded as absent is still absent.
+

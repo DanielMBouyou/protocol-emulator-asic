@@ -29,6 +29,7 @@ Record format is fixed by [DEC-0004](decision-log.md#dec-0004-s00-d4-register-fo
 | [coverage-map.md](coverage-map.md) | stages against research questions, and the record that the two directions agree |
 | [contact-plan.md](contact-plan.md) | per open question, a drafted question text and the channel assigned to it |
 | [gate-g00.md](gate-g00.md) | the G00 evaluation, each condition MET or NOT MET with its evidence |
+| [gate-g00-condition-1.md](gate-g00-condition-1.md) | condition 1 re-evaluated on 2026-09-18 after retention was performed; supersedes the condition 1 section of the record above |
 
 ## Operators
 

@@ -4,7 +4,9 @@ Register `SRC-nnnn`, defined in [EVIDENCE_POLICY.md](../EVIDENCE_POLICY.md#regis
 
 Every document below was retrieved twice on 2026-09-17, once by each operator of the S00 double extraction, and each retrieval has its own entry in [query-log.md](query-log.md).
 
-`retained_copy` reads PENDING throughout. The S00 retrievals were made to re-enter the bootstrap statements as claims; the copies were not written to the primary-document store that DEC-0004 fixes. That store is populated at [S01](../PREBENCH_PLAN.md#s01-challenge-and-pdk-constraints). Until then a claim can be re-checked only against the live URL, not against a retained copy, and a live page can change. This is recorded as a gap, not as a completed field.
+`retained_copy` was PENDING until 2026-09-18, when every document was retrieved as raw bytes, written to the primary-document store and hashed under [DEC-0014](decision-log.md#dec-0014-retention-is-s00-work-and-the-documents-read-on-2026-09-17-were-never-retained). That decision also corrects the earlier statement, made here and in three other records, that the store is populated at S01. Retention is S00 work under the [slip rule](../PREBENCH_PLAN.md#slip-rule).
+
+**The copy is not the document the claims were read from.** Every record below was accessed on 2026-09-17 and retained on 2026-09-18. The bytes read on the 17th were never hashed, so identity across the two dates is not established and cannot now be established. The `retained_copy` field therefore carries the date the copy was taken, so that no record asserts otherwise. What the retained copies do and do not support is measured in [OBS-0004](observation-register.md#obs-0004-re-check-of-every-s00-claim-against-its-retained-copy), and the permanent loss is [LIM-0003](limitation-register.md#lim-0003-the-documents-the-s00-claims-were-read-from-were-never-retained).
 
 
 ### SRC-0001 IHP-GmbH/ihp-sg13cmos5l (repository landing page)
@@ -18,7 +20,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://github.com/IHP-GmbH/ihp-sg13cmos5l
 - **version**: default branch rendering, retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0001_IHP-CMOS5LREPO.html`, sha256 `d8e79eb2ea8d868caf2af92339d51397cefb5f52d5779b825f83a54694fda695`, 258830 bytes, copy taken 2026-09-18. This page embeds a per-request `request-id` and `html-safe-nonce`, so two retrievals minutes apart differ in bytes. The hash identifies this copy and is not an identity for the document
 - **redistribution**: Repository lists an Apache-2.0 licence file; short excerpts quoted for analysis
 - **derived_from**: NONE
 - **relations**: NONE
@@ -38,7 +40,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://raw.githubusercontent.com/IHP-GmbH/IHP-Open-PDK/dev/README.md
 - **version**: dev branch, retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0002_IHP-DEVREADME.md`, sha256 `d62b7266f2ff8ef7640e19c0655fc518333019e36431d00aff60b24e06103030`, 9496 bytes, copy taken 2026-09-18
 - **redistribution**: Apache-2.0 (per the README's own License section); short excerpts quoted for analysis
 - **derived_from**: NONE
 - **relations**: NONE
@@ -58,7 +60,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://github.com/IHP-GmbH/IHP-Open-PDK
 - **version**: default branch rendering, retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0003_IHP-REPO.html`, sha256 `5be7a79aad867ce664c2afdca9b4086aace7e9428cd4cd877da68aa7253e35f1`, 339851 bytes, copy taken 2026-09-18. This page embeds a per-request `request-id` and `html-safe-nonce`, so two retrievals minutes apart differ in bytes. The hash identifies this copy and is not an identity for the document
 - **redistribution**: Repository released under Apache-2.0; short excerpts quoted for analysis
 - **derived_from**: NONE
 - **relations**: NONE
@@ -78,7 +80,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://blog.janestreet.com/protocol-emulator-asic-competition/
 - **version**: Published Sep 10, 2026; retrieved 2026-09-17; page states "4 min read"
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0004_ORG-BLOG.html`, sha256 `b01497ccf9bb8636f62e9b4433f3af884637e8d46048bd71b4bef5ffc988a909`, 36703 bytes, copy taken 2026-09-18
 - **redistribution**: Copyrighted corporate blog content. Short verbatim quotation for citation and fact-checking only; full reproduction not permitted. The WebFetch summarizer explicitly declined to reproduce the page in full on copyright grounds.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -98,7 +100,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://tinytapeout.com/specs/clock/
 - **version**: retrieved 2026-09-17; site generator meta value Hugo 0.160.1
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0005_TT-CLOCK.html`, sha256 `0a4a6c0fae703330cbcdd1c000925602b44c84b3ce7b30bfd19318b596aaba3e`, 88701 bytes, copy taken 2026-09-18
 - **redistribution**: Quoted verbatim in short excerpts for analysis; site terms not reproduced here.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -118,7 +120,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/.github/workflows/gds.yaml
 - **version**: branch cmos5l; retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0006_TT-GDSYAML.yaml`, sha256 `070480c2c2bc08f9c972161c0f424dc9238a8f3c3c3aafdc67851edd61eadbd3`, 1007 bytes, copy taken 2026-09-18
 - **redistribution**: Repository ships an Apache License Version 2.0 LICENSE file; short verbatim excerpts quoted here for analysis.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -138,7 +140,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://tinytapeout.com/specs/gpio/
 - **version**: retrieved 2026-09-17; site generator meta value Hugo 0.160.1
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0007_TT-GPIO.html`, sha256 `6d0f75beaf46d0e9e28ab5fccb0205c778074f479d0b8f6d5120eaa076c41e6d`, 91104 bytes, copy taken 2026-09-18
 - **redistribution**: Quoted verbatim in short excerpts for analysis; site terms not reproduced here.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -158,7 +160,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://tinytapeout.com/chips/ttihp0p4/
 - **version**: retrieved 2026-09-17; page metadata itemprop dateModified 2026-09-15T20:16:23+01:00
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0008_TT-IHP0P4.html`, sha256 `b14e9c2b52dfc015af7af9a531e2a07ee318e769dffeaec050c44afbafffc785`, 130605 bytes, copy taken 2026-09-18
 - **redistribution**: Quoted verbatim in short excerpts for analysis; site terms not reproduced here.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -178,7 +180,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/info.yaml
 - **version**: branch cmos5l; retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0009_TT-INFOYAML.yaml`, sha256 `3b149957d61b8516f55e0d613919691eb04c1728daa762e17343b919f13b78f2`, 1584 bytes, copy taken 2026-09-18
 - **redistribution**: Repository ships an Apache License Version 2.0 LICENSE file; short verbatim excerpts quoted here for analysis.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -198,7 +200,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/LICENSE
 - **version**: branch cmos5l; retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0010_TT-LICENSE.txt`, sha256 `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4`, 11357 bytes, copy taken 2026-09-18
 - **redistribution**: Apache License Version 2.0 text; freely redistributable.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -218,7 +220,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://tinytapeout.com/specs/memory/
 - **version**: retrieved 2026-09-17; site generator meta value Hugo 0.160.1
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0011_TT-MEMORY.html`, sha256 `3ccdf268dfeb692a79ce26b8bcfb78da99391d6f3175be33b025413fdac6c203`, 98453 bytes, copy taken 2026-09-18
 - **redistribution**: Quoted verbatim in short excerpts for analysis; site terms not reproduced here.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -238,7 +240,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://tinytapeout.com/runs/
 - **version**: retrieved 2026-09-17; site generator meta value Hugo 0.160.1
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0012_TT-RUNS.html`, sha256 `f1d081be2ac30a5e92beb18a0138684525bb4df4f57fe155a79e1159bf6a8257`, 98017 bytes, copy taken 2026-09-18
 - **redistribution**: Quoted verbatim in short excerpts for analysis; site terms not reproduced here.
 - **derived_from**: NONE
 - **relations**: NONE
@@ -258,7 +260,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **url**: https://raw.githubusercontent.com/TinyTapeout/tt-support-tools/ihp-sg13cmos5l/tech/ihp-sg13cmos5l/tile_sizes.yaml
 - **version**: branch ihp-sg13cmos5l; retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
-- **retained_copy**: PENDING, to be written to the primary-document store at S01
+- **retained_copy**: `SRC-0013_TT-TILESIZES.yaml`, sha256 `b70060737ca784124602a6104041055d5245175d3ca2c08519226abcfd577c63`, 406 bytes, copy taken 2026-09-18
 - **redistribution**: Short verbatim excerpts quoted here for analysis; upstream repository licence not fetched in this pass.
 - **derived_from**: NONE
 - **relations**: NONE

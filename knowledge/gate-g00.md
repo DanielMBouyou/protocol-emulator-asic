@@ -7,6 +7,8 @@ Evaluation of the gate of [S00](../PREBENCH_PLAN.md#s00-methodological-setup), w
 - **artifact version checked**: the working tree of this repository as committed in the commit that carries this record.
 - **recorded as a DECISION**: [DEC-0012](decision-log.md#dec-0012-record-of-the-g00-evaluation), as [the plan](../PREBENCH_PLAN.md#rules-of-the-plan) requires. That record carries the verdict; this file carries the evidence.
 
+> **Partly superseded on 2026-09-18.** The verdict below stands. Two statements in it do not. This record names S01 as the venue for retention, and says S01 has not opened as though the failed gate barred it. Neither is supported by the canonical rules: the plan assigns retention to no stage, its stage-start rule turns on inputs, and the slip rule assigns remedial work to the stage whose gate failed. [DEC-0014](decision-log.md#dec-0014-retention-is-s00-work-and-the-documents-read-on-2026-09-17-were-never-retained) corrects both, and condition 1 alone has been re-evaluated in [gate-g00-condition-1.md](gate-g00-condition-1.md). This file is not edited further, because it is the record of what was evaluated on 2026-09-17.
+
 **Result: NOT PASSED.** Four conditions MET, two NOT MET.
 
 Under the [slip rule](../PREBENCH_PLAN.md#slip-rule), S00 stays open until the failing conditions pass, every downstream stage shifts by the same number of days, and no stage is skipped or merged. The floor date does not move. [S01](../PREBENCH_PLAN.md#s01-challenge-and-pdk-constraints) has not opened, and no research beyond what S00 itself required has been done.
@@ -30,7 +32,7 @@ The dry-run entry is CLM-0048 in [claim-register-organizer.md](claim-register-or
 
 First, its `reading_confidence` reads `high; printed imperative retrieved verbatim from the raw HTML; the source prints no unit for this value`, and the field is defined to take UNAMBIGUOUS, or NEEDS-INTERPRETATION with the interpretation written out. No record in the register uses either value, and 26 carry no level at all. Recorded as [LIM-0002](limitation-register.md#lim-0002-the-reading_confidence-field-does-not-use-its-own-vocabulary).
 
-Second, SRC-0004 has `retained_copy: PENDING`, as do all 13 source records, and the [retention rule](../EVIDENCE_POLICY.md#retention-of-primary-documents) requires every included source to have a retained copy with a content hash. Recorded as [LIM-0003](limitation-register.md#lim-0003-no-primary-document-has-a-retained-copy).
+Second, SRC-0004 has `retained_copy: PENDING`, as do all 13 source records, and the [retention rule](../EVIDENCE_POLICY.md#retention-of-primary-documents) requires every included source to have a retained copy with a content hash. Recorded as [LIM-0003](limitation-register.md#lim-0003-the-documents-the-s00-claims-were-read-from-were-never-retained).
 
 Both are non-compliance with rules that already decide the case, not gaps in a rule. The gate's instruction to resolve a difference by correcting the rule text rather than the records governs differences between operators; it does not license the project to rewrite what an operator recorded, nor to backdate a retrieval, in order to pass its own gate.
 

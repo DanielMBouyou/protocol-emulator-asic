@@ -37,7 +37,21 @@ Each source was retrieved twice, once by each operator of the S00 double extract
 | QRY-0025 | 2026-09-17 | IHP-GITHUB | https://github.com/IHP-GmbH/IHP-Open-PDK | NONE | NOT REPORTED | 1 | IHP-REPO | NOT APPLICABLE | OP-EXT-1 |
 | QRY-0026 | 2026-09-17 | IHP-GITHUB | https://github.com/IHP-GmbH/IHP-Open-PDK | NONE | NOT REPORTED | 1 | IHP-REPO | NOT APPLICABLE | OP-EXT-2 |
 
-26 entries, covering 13 distinct documents retrieved twice each.
+| QRY-0027 | 2026-09-18 | IHP-GITHUB | https://github.com/IHP-GmbH/ihp-sg13cmos5l | NONE | NOT REPORTED | 1 | IHP-CMOS5LREPO | NOT APPLICABLE | OP-OWNER |
+| QRY-0028 | 2026-09-18 | IHP-GITHUB | https://raw.githubusercontent.com/IHP-GmbH/IHP-Open-PDK/dev/README.md | NONE | NOT REPORTED | 1 | IHP-DEVREADME | NOT APPLICABLE | OP-OWNER |
+| QRY-0029 | 2026-09-18 | IHP-GITHUB | https://github.com/IHP-GmbH/IHP-Open-PDK | NONE | NOT REPORTED | 1 | IHP-REPO | NOT APPLICABLE | OP-OWNER |
+| QRY-0030 | 2026-09-18 | ORGANIZER-BLOG | https://blog.janestreet.com/protocol-emulator-asic-competition/ | NONE | NOT REPORTED | 1 | ORG-BLOG | NOT APPLICABLE | OP-OWNER |
+| QRY-0031 | 2026-09-18 | TT-SITE | https://tinytapeout.com/specs/clock/ | NONE | NOT REPORTED | 1 | TT-CLOCK | NOT APPLICABLE | OP-OWNER |
+| QRY-0032 | 2026-09-18 | TT-GITHUB | https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/.github/workflows/gds.yaml | NONE | NOT REPORTED | 1 | TT-GDSYAML | NOT APPLICABLE | OP-OWNER |
+| QRY-0033 | 2026-09-18 | TT-SITE | https://tinytapeout.com/specs/gpio/ | NONE | NOT REPORTED | 1 | TT-GPIO | NOT APPLICABLE | OP-OWNER |
+| QRY-0034 | 2026-09-18 | TT-SITE | https://tinytapeout.com/chips/ttihp0p4/ | NONE | NOT REPORTED | 1 | TT-IHP0P4 | NOT APPLICABLE | OP-OWNER |
+| QRY-0035 | 2026-09-18 | TT-GITHUB | https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/info.yaml | NONE | NOT REPORTED | 1 | TT-INFOYAML | NOT APPLICABLE | OP-OWNER |
+| QRY-0036 | 2026-09-18 | TT-GITHUB | https://raw.githubusercontent.com/TinyTapeout/ttihp-verilog-template/cmos5l/LICENSE | NONE | NOT REPORTED | 1 | TT-LICENSE | NOT APPLICABLE | OP-OWNER |
+| QRY-0037 | 2026-09-18 | TT-SITE | https://tinytapeout.com/specs/memory/ | NONE | NOT REPORTED | 1 | TT-MEMORY | NOT APPLICABLE | OP-OWNER |
+| QRY-0038 | 2026-09-18 | TT-SITE | https://tinytapeout.com/runs/ | NONE | NOT REPORTED | 1 | TT-RUNS | NOT APPLICABLE | OP-OWNER |
+| QRY-0039 | 2026-09-18 | TT-GITHUB | https://raw.githubusercontent.com/TinyTapeout/tt-support-tools/ihp-sg13cmos5l/tech/ihp-sg13cmos5l/tile_sizes.yaml | NONE | NOT REPORTED | 1 | TT-TILESIZES | NOT APPLICABLE | OP-OWNER |
+
+39 entries. The first 26 are the S00 double extraction, two per document. QRY-0027 to QRY-0039 are the retention retrievals of 2026-09-18, performed under [DEC-0014](decision-log.md#dec-0014-retention-is-s00-work-and-the-documents-read-on-2026-09-17-were-never-retained), one per document, each written to the primary-document store and hashed. The hash of each is in its source record, as the [handling of revisions](../RESEARCH_METHOD.md#handling-of-revisions-and-versions) requires of a logged re-access.
 
 ## Notes on venue behaviour
 
