@@ -7,6 +7,8 @@ Re-evaluation of condition 1 of the gate of [S00](../PREBENCH_PLAN.md#s00-method
 - **artifact version checked**: the working tree of this repository as committed in the commit that carries this record.
 - **occasioned by**: [DEC-0014](decision-log.md#dec-0014-retention-is-s00-work-and-the-documents-read-on-2026-09-17-were-never-retained), which found that retention is S00 work and had every source retrieved, stored and hashed.
 
+> **Superseded on 2026-09-18** by [gate-g00-condition-1-r2.md](gate-g00-condition-1-r2.md), after the violation this record identified was fixed. The verdict below stands as the record of its own date. The state it describes does not: SRC-0004's version field no longer carries the quoted span, and the third evaluation found two further violations that this one did not reach.
+
 **Result: NOT MET.** On one ground, and not on either of the two grounds recorded on 2026-09-17.
 
 ## What the condition says, and what it therefore tests

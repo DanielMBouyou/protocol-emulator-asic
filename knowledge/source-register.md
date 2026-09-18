@@ -78,7 +78,7 @@ Every document below was retrieved twice on 2026-09-17, once by each operator of
 - **publisher_or_author**: Jane Street Blog; By: Benjamin Devlin, By: Anish Singhani
 - **identifier**: blog.janestreet.com/protocol-emulator-asic-competition/
 - **url**: https://blog.janestreet.com/protocol-emulator-asic-competition/
-- **version**: Published Sep 10, 2026; retrieved 2026-09-17; page states "4 min read"
+- **version**: Published Sep 10, 2026; retrieved 2026-09-17
 - **accessed_on**: 2026-09-17
 - **retained_copy**: `SRC-0004_ORG-BLOG.html`, sha256 `b01497ccf9bb8636f62e9b4433f3af884637e8d46048bd71b4bef5ffc988a909`, 36703 bytes, copy taken 2026-09-18
 - **redistribution**: Copyrighted corporate blog content. Short verbatim quotation for citation and fact-checking only; full reproduction not permitted. The WebFetch summarizer explicitly declined to reproduce the page in full on copyright grounds.

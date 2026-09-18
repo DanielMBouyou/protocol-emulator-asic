@@ -30,6 +30,7 @@ Record format is fixed by [DEC-0004](decision-log.md#dec-0004-s00-d4-register-fo
 | [contact-plan.md](contact-plan.md) | per open question, a drafted question text and the channel assigned to it |
 | [gate-g00.md](gate-g00.md) | the G00 evaluation, each condition MET or NOT MET with its evidence |
 | [gate-g00-condition-1.md](gate-g00-condition-1.md) | condition 1 re-evaluated on 2026-09-18 after retention was performed; supersedes the condition 1 section of the record above |
+| [gate-g00-condition-1-r2.md](gate-g00-condition-1-r2.md) | condition 1 evaluated a third time after the minimal fix; supersedes the result of the record above, which is preserved as the record of its own date |
 
 ## Operators
 
